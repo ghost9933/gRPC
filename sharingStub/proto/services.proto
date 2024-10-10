@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package todo;
+
+// The ToDo service definition.
+service ToDoService {
+    // Create a new ToDo item
+    rpc CreateToDo (CreateToDoRequest) returns (CreateToDoResponse);
+    
+    // Get a ToDo item by ID
+    rpc GetToDo (GetToDoRequest) returns (GetToDoResponse);
+    
+    // Update a ToDo item
+    rpc UpdateToDo (UpdateToDoRequest) returns (UpdateToDoResponse);
+    
+    // Delete a ToDo item
+    rpc DeleteToDo (DeleteToDoRequest) returns (DeleteToDoResponse);
+}
+
+// The request message containing the ToDo item details.
+message CreateToDoRequest {
+    string title = 1;
+    string description = 2;
+}
+
+// The response message containing the created ToDo item ID.
+message CreateToDoResponse {
+    string id = 1;
+}
+
+// The request message for getting a ToDo item by ID.
+message GetToDoRequest {
+    string id = 1;
+}
+
+// The response message containing the ToDo item details.
+message GetToDoResponse {
+    string id = 1;
+    string title = 2;
+    string description = 3;
+}
+
+// The request message for updating a ToDo item.
+message UpdateToDoRequest {
+    string id = 1;
+    string title = 2;
+    string description = 3;
+}
+
+// The response message for updating a ToDo item.
+message UpdateToDoResponse {
+    bool success = 1;
+}
+
+// The request message for deleting a ToDo item.
+message DeleteToDoRequest {
+    string id = 1;
+}
+
+// The response message for deleting a ToDo item.
+message DeleteToDoResponse {
+    bool success = 1;
+}
