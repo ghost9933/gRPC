@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import services_pb2 as services__pb2
+import main_pb2 as main__pb2
 
 GRPC_GENERATED_VERSION = '1.66.2'
 GRPC_VERSION = grpc.__version__
@@ -18,16 +18,15 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in services_pb2_grpc.py depends on'
+        + f' but the generated code in main_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
     )
 
 
-class ToDoServiceStub(object):
-    """The ToDo service definition.
-    """
+class TodoServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
         """Constructor.
@@ -35,97 +34,91 @@ class ToDoServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.CreateToDo = channel.unary_unary(
-                '/todo.ToDoService/CreateToDo',
-                request_serializer=services__pb2.CreateToDoRequest.SerializeToString,
-                response_deserializer=services__pb2.CreateToDoResponse.FromString,
+        self.CreateTodo = channel.unary_unary(
+                '/todo.TodoService/CreateTodo',
+                request_serializer=main__pb2.TodoRequest.SerializeToString,
+                response_deserializer=main__pb2.TodoResponse.FromString,
                 _registered_method=True)
-        self.GetToDo = channel.unary_unary(
-                '/todo.ToDoService/GetToDo',
-                request_serializer=services__pb2.GetToDoRequest.SerializeToString,
-                response_deserializer=services__pb2.GetToDoResponse.FromString,
+        self.DeleteTodo = channel.unary_unary(
+                '/todo.TodoService/DeleteTodo',
+                request_serializer=main__pb2.TodoId.SerializeToString,
+                response_deserializer=main__pb2.TodoResponse.FromString,
                 _registered_method=True)
-        self.UpdateToDo = channel.unary_unary(
-                '/todo.ToDoService/UpdateToDo',
-                request_serializer=services__pb2.UpdateToDoRequest.SerializeToString,
-                response_deserializer=services__pb2.UpdateToDoResponse.FromString,
+        self.UpdateTodo = channel.unary_unary(
+                '/todo.TodoService/UpdateTodo',
+                request_serializer=main__pb2.TodoRequest.SerializeToString,
+                response_deserializer=main__pb2.TodoResponse.FromString,
                 _registered_method=True)
-        self.DeleteToDo = channel.unary_unary(
-                '/todo.ToDoService/DeleteToDo',
-                request_serializer=services__pb2.DeleteToDoRequest.SerializeToString,
-                response_deserializer=services__pb2.DeleteToDoResponse.FromString,
+        self.ListTodos = channel.unary_unary(
+                '/todo.TodoService/ListTodos',
+                request_serializer=main__pb2.Empty.SerializeToString,
+                response_deserializer=main__pb2.TodoListResponse.FromString,
                 _registered_method=True)
 
 
-class ToDoServiceServicer(object):
-    """The ToDo service definition.
-    """
+class TodoServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
 
-    def CreateToDo(self, request, context):
-        """Create a new ToDo item
-        """
+    def CreateTodo(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def GetToDo(self, request, context):
-        """Get a ToDo item by ID
-        """
+    def DeleteTodo(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def UpdateToDo(self, request, context):
-        """Update a ToDo item
-        """
+    def UpdateTodo(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def DeleteToDo(self, request, context):
-        """Delete a ToDo item
-        """
+    def ListTodos(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_ToDoServiceServicer_to_server(servicer, server):
+def add_TodoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'CreateToDo': grpc.unary_unary_rpc_method_handler(
-                    servicer.CreateToDo,
-                    request_deserializer=services__pb2.CreateToDoRequest.FromString,
-                    response_serializer=services__pb2.CreateToDoResponse.SerializeToString,
+            'CreateTodo': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateTodo,
+                    request_deserializer=main__pb2.TodoRequest.FromString,
+                    response_serializer=main__pb2.TodoResponse.SerializeToString,
             ),
-            'GetToDo': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetToDo,
-                    request_deserializer=services__pb2.GetToDoRequest.FromString,
-                    response_serializer=services__pb2.GetToDoResponse.SerializeToString,
+            'DeleteTodo': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteTodo,
+                    request_deserializer=main__pb2.TodoId.FromString,
+                    response_serializer=main__pb2.TodoResponse.SerializeToString,
             ),
-            'UpdateToDo': grpc.unary_unary_rpc_method_handler(
-                    servicer.UpdateToDo,
-                    request_deserializer=services__pb2.UpdateToDoRequest.FromString,
-                    response_serializer=services__pb2.UpdateToDoResponse.SerializeToString,
+            'UpdateTodo': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateTodo,
+                    request_deserializer=main__pb2.TodoRequest.FromString,
+                    response_serializer=main__pb2.TodoResponse.SerializeToString,
             ),
-            'DeleteToDo': grpc.unary_unary_rpc_method_handler(
-                    servicer.DeleteToDo,
-                    request_deserializer=services__pb2.DeleteToDoRequest.FromString,
-                    response_serializer=services__pb2.DeleteToDoResponse.SerializeToString,
+            'ListTodos': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListTodos,
+                    request_deserializer=main__pb2.Empty.FromString,
+                    response_serializer=main__pb2.TodoListResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'todo.ToDoService', rpc_method_handlers)
+            'todo.TodoService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('todo.ToDoService', rpc_method_handlers)
+    server.add_registered_method_handlers('todo.TodoService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class ToDoService(object):
-    """The ToDo service definition.
-    """
+class TodoService(object):
+    """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def CreateToDo(request,
+    def CreateTodo(request,
             target,
             options=(),
             channel_credentials=None,
@@ -138,9 +131,9 @@ class ToDoService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/todo.ToDoService/CreateToDo',
-            services__pb2.CreateToDoRequest.SerializeToString,
-            services__pb2.CreateToDoResponse.FromString,
+            '/todo.TodoService/CreateTodo',
+            main__pb2.TodoRequest.SerializeToString,
+            main__pb2.TodoResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -152,7 +145,7 @@ class ToDoService(object):
             _registered_method=True)
 
     @staticmethod
-    def GetToDo(request,
+    def DeleteTodo(request,
             target,
             options=(),
             channel_credentials=None,
@@ -165,9 +158,9 @@ class ToDoService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/todo.ToDoService/GetToDo',
-            services__pb2.GetToDoRequest.SerializeToString,
-            services__pb2.GetToDoResponse.FromString,
+            '/todo.TodoService/DeleteTodo',
+            main__pb2.TodoId.SerializeToString,
+            main__pb2.TodoResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -179,7 +172,7 @@ class ToDoService(object):
             _registered_method=True)
 
     @staticmethod
-    def UpdateToDo(request,
+    def UpdateTodo(request,
             target,
             options=(),
             channel_credentials=None,
@@ -192,9 +185,9 @@ class ToDoService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/todo.ToDoService/UpdateToDo',
-            services__pb2.UpdateToDoRequest.SerializeToString,
-            services__pb2.UpdateToDoResponse.FromString,
+            '/todo.TodoService/UpdateTodo',
+            main__pb2.TodoRequest.SerializeToString,
+            main__pb2.TodoResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -206,7 +199,7 @@ class ToDoService(object):
             _registered_method=True)
 
     @staticmethod
-    def DeleteToDo(request,
+    def ListTodos(request,
             target,
             options=(),
             channel_credentials=None,
@@ -219,9 +212,9 @@ class ToDoService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/todo.ToDoService/DeleteToDo',
-            services__pb2.DeleteToDoRequest.SerializeToString,
-            services__pb2.DeleteToDoResponse.FromString,
+            '/todo.TodoService/ListTodos',
+            main__pb2.Empty.SerializeToString,
+            main__pb2.TodoListResponse.FromString,
             options,
             channel_credentials,
             insecure,
