@@ -1,0 +1,24 @@
+services:
+  pet_adoption_server:
+    build: .
+    ports:
+      - "50051:50051"
+    logging:
+      driver: "json-file"  # Use the json-file logging driver
+      options:
+        max-size: "10m"  # Limit the size of log files
+        max-file: "3"    # Keep a maximum of 3 log files
+
+  pet_adoption_tests:
+    build: .
+    depends_on:
+      - pet_adoption_server
+    environment:
+      - CLIENT_IP=pet_adoption_tests
+      - SERVER_IP=pet_adoption_server
+    command: ["python", "client/test.py"]
+    logging:
+      driver: "json-file"  # Use the json-file logging driver
+      options:
+        max-size: "10m"  # Limit the size of log files
+        max-file: "3"    # Keep a maximum of 3 log files
