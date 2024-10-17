@@ -48,12 +48,12 @@ def remove_pet(client, pet_id):
 
 def run():
     client_ip = os.environ.get('CLIENT_IP')
-    server_ip = os.environ.get('SERVER_IP', 'pet_adoption_server')  # Use the service name
-    server_ip='127.0.0.1'
+    server_address = os.getenv('SERVER_ADDRESS', 'server:50051')# Use the service name
+    # server_ip='127.0.0.1'
     print(f"Client running at IP: {client_ip}")
-    print(f"Connecting to server at: {server_ip}:50051")
+    print(f"Connecting to server at: {server_address}")
 
-    with grpc.insecure_channel(f"{server_ip}:50051") as channel:
+    with grpc.insecure_channel(f"{server_address}") as channel:
         client = petadoption_pb2_grpc.PetAdoptionServiceStub(channel)
 
         while True:
