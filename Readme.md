@@ -87,24 +87,25 @@ This repository provides an implementation of a gRPC-based Todo application and 
 
 ### Running the Pet Adoption System
 
-1. **Build Docker Images**:
-   - Use the following command to build the Docker images:
-   ```bash
-   docker-compose build --no-cache
-   ```
+###petAdoption_Python
+                1. **Build Python Client and Python Server Docker Images**:
+                    - Use the following command to build the Docker images:
+                    ```bash
+                    docker-compose build --no-cache
+                    ```
 
-2. **Start the Services**:
-   - Bring up the services with:
-   ```bash
-   docker-compose up
-   ```
+                2. **Start the Services**:
+                    - Bring up the services with:
+                    ```bash
+                    docker-compose up
+                    ```
 
-3. **Access the Client**:
-   - Execute the client within the Docker container:
-   ```bash
-   docker-compose exec client bash
-   python client.py
-   ```
+                3. **Access the Client**:
+                    - Execute the client within the Docker container:
+                    ```bash
+                    docker-compose exec client bash
+                    python client.py
+                    ```
 
 ### Testing the Client
 
