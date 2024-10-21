@@ -33,27 +33,28 @@ This repository provides an implementation of a gRPC-based Todo application and 
    ```bash
    pip install grpcio grpcio-tools
    ```
+2. **quick start**:
+     ```bash
+   $ git clone -b v1.66.0 --depth 1 --shallow-submodules https://github.com/grpc/grpc
+    cd grpc/examples/python/helloworld
 
-2. **Clone the Repository** (if not already done):
-   ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+    python -m grpc_tools.protoc -I../../protos --python_out=. --pyi_out=. --grpc_python_out=. ../../protos/helloworld.proto
+    
+    python greeter_server.py
+
+    python greeter_client.py
+
+
+
    ```
 
-### Running the Todo Application
-
-1. **Start the Server**:
-   - Navigate to the `sharingStub` directory and run:
+3. **Basic Guide** :
    ```bash
-   python server.py
-   ```
+   $ git clone -b v1.66.0 --depth 1 --shallow-submodules https://github.com/grpc/grpc
+   cd grpc/examples/python/route_guide
 
-2. **Run the Client**:
-   - In a separate terminal, run:
-   ```bash
-   python client.py
-   ```
 
+   ```
 ---
 
 ## Question 2: Todo Service Definition
