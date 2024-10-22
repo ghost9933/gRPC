@@ -1,4 +1,3 @@
-
 # gRPC Tutorial: Todo App and Pet Adoption System
 
 This repository provides an implementation of a gRPC-based Todo application and a Pet Adoption system using Python and Java. Follow the instructions below to set up, run, and test the code for both applications.
@@ -33,28 +32,27 @@ This repository provides an implementation of a gRPC-based Todo application and 
    ```bash
    pip install grpcio grpcio-tools
    ```
-2. **quick start**:
-     ```bash
-   $ git clone -b v1.66.0 --depth 1 --shallow-submodules https://github.com/grpc/grpc
-    cd grpc/examples/python/helloworld
 
-    python -m grpc_tools.protoc -I../../protos --python_out=. --pyi_out=. --grpc_python_out=. ../../protos/helloworld.proto
-    
-    python greeter_server.py
-
-    python greeter_client.py
-
-
-
-   ```
-
-3. **Basic Guide** :
+2. **Clone the Repository** (if not already done):
    ```bash
-   $ git clone -b v1.66.0 --depth 1 --shallow-submodules https://github.com/grpc/grpc
-   cd grpc/examples/python/route_guide
-
-
+   git clone <repository-url>
+   cd <repository-directory>
    ```
+
+### Running the Todo Application
+
+1. **Start the Server**:
+   - Navigate to the `sharingStub` directory and run:
+   ```bash
+   python server.py
+   ```
+
+2. **Run the Client**:
+   - In a separate terminal, run:
+   ```bash
+   python client.py
+   ```
+
 ---
 
 ## Question 2: Todo Service Definition
@@ -87,30 +85,64 @@ This repository provides an implementation of a gRPC-based Todo application and 
 
 ### Running the Pet Adoption System
 
-###petAdoption_Python
-                1. **Build Python Client and Python Server Docker Images**:
-                    - Use the following command to build the Docker images:
-                    ```bash
-                    docker-compose build --no-cache
-                    ```
+1. **Build Docker Images**:
+   - Use the following command to build the Docker images:
+   ```bash
+   docker-compose build --no-cache
+   ```
 
-                2. **Start the Services**:
-                    - Bring up the services with:
-                    ```bash
-                    docker-compose up
-                    ```
+2. **Start the Services**:
+   - Bring up the services with:
+   ```bash
+   docker-compose up
+   ```
 
-                3. **Access the Client**:
-                    - Execute the client within the Docker container:
-                    ```bash
-                    docker-compose exec client bash
-                    python client.py
-                    ```
+3. **Access the Client**:
+   - Execute the client within the Docker container:
+   ```bash
+   docker-compose exec client bash
+   python client.py
+   ```
 
 ### Testing the Client
 
 1. **Connect to the Server**: Ensure the client connects to the gRPC server correctly.
 2. **Run Functional Tests**: Test various functionalities such as pet registration and search.
+
+
+# Question 3
+# Running the gRPC Server and Client
+
+This section provides instructions for setting up and running the gRPC server and client for both Java and Python implementations.
+
+## Starting the gRPC Server
+
+1. **Navigate to the Java gRPC directory**:
+   ```bash
+   cd Grpc-Java/grpc-java
+   ```
+
+2. **Build and start the Docker containers**:
+   ```bash
+   docker-compose up --build
+   ```
+
+## Testing the Client
+
+1. **Navigate to the Python Pet Adoption client directory**:
+   ```bash
+   cd Grpc-python/gRPC/PetAdoption/client
+   ```
+
+2. **Run the client in a Docker container**:
+   ```bash
+   docker-compose run client bash
+   ```
+
+3. **Execute the test and client scripts**:
+   ```bash
+   python test.py & python client.py
+   ```
 
 ---
 
