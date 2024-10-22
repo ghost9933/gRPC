@@ -114,18 +114,6 @@ This section provides instructions for setting up and running the gRPC server an
    ```bash
    python test.py & python client.py
    ```
-
-            
-                    **just python client and server**:
-                    ```bash
-                    docker-compose build --no-cache
-
-                    docker-compose up
-
-                    docker-compose exec client bash
-                    python client.py
-                    ```
-
 ---
 
 ### Testing the Client
